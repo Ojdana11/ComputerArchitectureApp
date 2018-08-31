@@ -1,0 +1,78 @@
+h1 {
+    color: #ab0200;
+}
+
+footer {
+    position: static;
+    margin-top: 20px;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    background-color: #ccc
+}
+
+footer p {
+    padding: 15px;
+}
+.error-message {
+    color: #a94442;
+}
+
+.error-message:first-letter {
+    text-transform: capitalize;
+}
+
+a{
+    color: black;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+.box-by-me {
+    width: 200px;
+    height: 100px;
+    padding: 30px;
+    border: 2px groove black;
+    margin: 20px;
+    float: left;
+    background-color: #267326;
+    border-radius: 10px;
+}
+.box-by-me:hover{
+    background-color: darkgreen;
+}
+.td-tasks{
+    min-height: 50px;
+    bottom: 0;
+    width: 80%;
+    background-color: #ccc;
+    padding: 15px;
+    float: none;
+    margin: 2px;
+}
+.task-id{
+    width: 10%;
+    float: left;
+    background-color: white;
+    margin: 2px;
+    padding-left: 10px;
+
+}
+.task-question{
+    width: 40%;
+    float: left;
+    background-color: white;
+    margin: 2px;
+    padding-left: 10px;
+}
+.task-answer{
+    width: 30%;
+    float: left;
+    background-color: white;
+    margin: 2px;
+    padding-left: 10px;
+}
+.container-big{
+    min-height: 800px;
+}

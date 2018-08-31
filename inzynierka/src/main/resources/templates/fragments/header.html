@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<th:block th:fragment="header">
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a th:href="@{/}">
+                    <img th:src="@{/img/logo.png}"/>
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a th:href="@{/}">Start</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="active">
+                        <a th:href="@{/login}">Zaloguj</a>
+                    </li>
+                    <li class="active" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/logout}">Wyloguj</a>
+                    </li>
+                    <li class="active" sec:authorize="isAnonymous()">
+                        <a th:href="@{/register}">Rejestracja</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/task}">Zadania</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/materials}">Materiały</a>
+                    </li>
+                    <li class="active">
+                        <a th:href="@{/calculator}">Kalkulator</a>
+                    </li>
+                    <li class="active" sec:authorize="hasAuthority('ADMIN')">
+                        <a th:href="@{/admin}">Admin</a>
+                    </li>
+                    <li class="active" sec:authorize="hasAuthority('USER')">
+                        <a th:href="@{/history}">Historia</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</th:block>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
