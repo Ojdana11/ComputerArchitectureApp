@@ -1,0 +1,17 @@
+com\architektura\inzynierka\config\MvcConfig.class
+com\architektura\inzynierka\controller\ErrorController.class
+com\architektura\inzynierka\config\SecurityConfiguration.class
+com\architektura\inzynierka\repository\UsersRepository.class
+com\architektura\inzynierka\model\Users.class
+com\architektura\inzynierka\repository\TasksRepository.class
+com\architektura\inzynierka\repository\TasksStatusRepository.class
+com\architektura\inzynierka\InzynierkaApplication.class
+com\architektura\inzynierka\model\TasksStatus.class
+com\architektura\inzynierka\controller\UserController.class
+com\architektura\inzynierka\controller\RegistrationController.class
+com\architektura\inzynierka\controller\HomeController.class
+com\architektura\inzynierka\controller\AdminController.class
+com\architektura\inzynierka\config\LoggingAccessDeniedHandler.class
+com\architektura\inzynierka\config\AuthenticationProviderConfig.class
+com\architektura\inzynierka\controller\LoginController.class
+com\architektura\inzynierka\model\Tasks.class
