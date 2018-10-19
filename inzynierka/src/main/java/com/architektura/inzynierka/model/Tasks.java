@@ -1,17 +1,6 @@
 package com.architektura.inzynierka.model;
 
 import javax.persistence.Entity;
-<<<<<<< HEAD
-import javax.persistence.Id;
-
-@Entity
-public class Tasks {
-
-    @Id
-    private Integer id_task;
-    private String question;
-    private String answer;
-=======
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +15,7 @@ public class Tasks implements Serializable{
     private String question;
     private String answer;
     private String category;
->>>>>>> V2-Thyme
+
 
     public Integer getId_task() {
         return id_task;
@@ -51,8 +40,6 @@ public class Tasks implements Serializable{
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-<<<<<<< HEAD
-=======
 
     public String getCategory() {
         return category;
@@ -61,5 +48,5 @@ public class Tasks implements Serializable{
     public void setCategory(String category) {
         this.category = category;
     }
->>>>>>> V2-Thyme
+
 }

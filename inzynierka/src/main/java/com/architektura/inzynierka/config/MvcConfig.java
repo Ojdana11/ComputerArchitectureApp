@@ -1,17 +1,5 @@
 package com.architektura.inzynierka.config;
 
-<<<<<<< HEAD
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.CacheControl;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-
-import java.util.concurrent.TimeUnit;
-
-=======
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,14 +16,12 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import java.util.concurrent.TimeUnit;
 
 
->>>>>>> V2-Thyme
+
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 
-<<<<<<< HEAD
-    @Override
-=======
+
     @Bean
     @Description("Thymeleaf template resolver serving HTML 5")
     public ClassLoaderTemplateResolver templateResolver() {
@@ -78,7 +64,7 @@ public class MvcConfig implements WebMvcConfigurer {
         return viewResolver;
     }
     /*   @Override
->>>>>>> V2-Thyme
+
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/users").setViewName("users");
@@ -91,18 +77,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         // Register resource handler for CSS and JS
-<<<<<<< HEAD
-        registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/statics/")
-                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/resources/webjars/");
 
-    }
-
-    @Bean
-    public InternalResourceViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        return resolver;
-=======
         registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
 
@@ -121,7 +96,7 @@ public class MvcConfig implements WebMvcConfigurer {
                         "classpath:/static/img/",
                         "classpath:/static/css/",
                         "classpath:/static/js/");
->>>>>>> V2-Thyme
+
     }
 
     @Bean
@@ -134,8 +109,5 @@ public class MvcConfig implements WebMvcConfigurer {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> V2-Thyme
 }

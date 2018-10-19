@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\MvcConfig.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\ErrorController.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\RegistrationController.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\TasksStatus.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Tasks.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\UsersRepository.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\TasksStatusRepository.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\TasksRepository.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\LoggingAccessDeniedHandler.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\InzynierkaApplication.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\UserController.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\AuthenticationProviderConfig.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\AdminController.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\LoginController.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\SecurityConfiguration.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\HomeController.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Users.java
-=======
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\TasksServiceImpl.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\TasksStatus.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\RegisterController.java
@@ -34,9 +15,12 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\UserServiceImpl.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Calculator.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\TasksService.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Users.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\MvcConfig.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\ErrorController.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\RegistrationController.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\UserRegistrationDto.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\UsersRepository.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\TasksRepository.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\MaterialsController.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\LoggingAccessDeniedHandler.java
@@ -49,4 +33,3 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\utils\FieldMatchValidator.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\SecurityConfiguration.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\HomeController.java
->>>>>>> V2-Thyme

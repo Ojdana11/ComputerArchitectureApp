@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
     @RequestMapping("/")
-<<<<<<< HEAD
-    //@ResponseBody
-=======
->>>>>>> V2-Thyme
     public String hello(){
         return "index";
     }
