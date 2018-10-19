@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +7,18 @@
 </head>
 <body>
 
+=======
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Secured</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <h1>This is a secured page!</h1>
+    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+</div>
+>>>>>>> V2-Thyme
 </body>
 </html>

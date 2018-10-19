@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate='~{fragments/layout}'>
+<head>
+    <title>Task</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/main.css}"/>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <h1>Zadania do nauki</h1>
+
+    <tr th:each="task: ${tasks}">
+        <div class="td-tasks">
+            <div class="task-id"><td th:text="${task.id_task}" /></div>
+            <div class="task-question"><td th:text="${task.question}" /></div>
+            <div class="task-answer"><td th:text="${task.answer}" /></div>
+            <div><td th:text="${task.category}" /></div>
+        </div>
+
+    </tr>
+
+</div>
+</body>
+</html>

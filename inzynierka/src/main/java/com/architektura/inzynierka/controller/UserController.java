@@ -1,5 +1,6 @@
 package com.architektura.inzynierka.controller;
 
+<<<<<<< HEAD
 import com.architektura.inzynierka.model.Users;
 import com.architektura.inzynierka.repository.UsersRepository;
 import com.architektura.inzynierka.repository.UsersRepository;
@@ -12,11 +13,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/user")
+=======
+import com.architektura.inzynierka.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+>>>>>>> V2-Thyme
 public class UserController {
 
 
 
     @Autowired
+<<<<<<< HEAD
     private UsersRepository usersRepository;
 
     @Secured({"admin", "user"})
@@ -24,6 +34,13 @@ public class UserController {
     public @ResponseBody Iterable<Users> getAllUsers() {
         // This returns a JSON or XML with the users
         return usersRepository.findAll();
+=======
+    private UserRepository userRepository;
+
+    @GetMapping(path="/user")
+    public String user() {
+        return "user/index";
+>>>>>>> V2-Thyme
     }
 }
 

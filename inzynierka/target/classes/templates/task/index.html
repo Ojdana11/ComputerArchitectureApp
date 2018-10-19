@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate='~{fragments/layout}'>
+<head>
+    <title>Zadania</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <h1>Zadania do nauki </h1>
+
+    <a th:href="@{/task/showall}">
+        <div class="box-by-me">wszystkie zadania</div>
+    </a>
+
+    <a th:href="@{/task/showadd}">
+        <div class="box-by-me">dodawanie / odejmowanie</div>
+    </a>
+
+    <a href="/task/all" th:href="@{/task/showsubtract}">
+        <div class="box-by-me">mnożenie</div>
+    </a>
+    <a href="/task/all" th:href="@{/task/showdivide}">
+        <div class="box-by-me">dzielenie</div>
+    </a>
+
+    <a href="/task/all" th:href="@{/task/showextract}">
+        <div class="box-by-me">pierwiastkowanie</div>
+    </a>
+
+    <a href="/task/all" th:href="@{/task/showconversion}">
+        <div class="box-by-me">konwersja podstawy</div>
+    </a>
+    <a href="/task/all" th:href="@{/task/showcomma}">
+        <div class="box-by-me">zmienny przecinek</div>
+    </a>
+
+
+</div>
+</body>
+</html>

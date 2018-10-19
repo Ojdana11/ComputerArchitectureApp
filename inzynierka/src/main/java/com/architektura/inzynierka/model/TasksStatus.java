@@ -2,6 +2,10 @@ package com.architektura.inzynierka.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+<<<<<<< HEAD
+=======
+import java.sql.Date;
+>>>>>>> V2-Thyme
 
 @Entity
 public class TasksStatus {
@@ -10,6 +14,11 @@ public class TasksStatus {
     private Integer id_task;
     private Integer id_user;
     private Integer status;
+<<<<<<< HEAD
+=======
+    private Date date;
+    private Integer trial;
+>>>>>>> V2-Thyme
 
     public Integer getId_task() {
         return id_task;
@@ -34,4 +43,23 @@ public class TasksStatus {
     public void setStatus(Integer status) {
         this.status = status;
     }
+<<<<<<< HEAD
+=======
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Integer getTrial() {
+        return trial;
+    }
+
+    public void setTrial(Integer trial) {
+        this.trial = trial;
+    }
+>>>>>>> V2-Thyme
 }

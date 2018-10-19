@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +7,23 @@
 </head>
 <body>
 Index
+=======
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate='~{fragments/layout}'>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <h1>Moduł edukacyjny wspomagający naukę Architektury Komputerów</h1>
+    <p>Poniżej znajdue się kilka wpisów dotyczących ciekawostek związanych z Architekturą Komputerów</p>
+    <ul>
+        <li><a href="/story" th:href="@{/story}">Historia systemów liczbowych</a></li>
+        <li><a href="/story" th:href="@{/story}">Standardy IEEE</a></li>
+    </ul>
+</div>
+>>>>>>> V2-Thyme
 </body>
 </html>
