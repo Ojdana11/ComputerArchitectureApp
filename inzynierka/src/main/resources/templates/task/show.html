@@ -4,7 +4,11 @@
       layout:decorate='~{fragments/layout}'>
 <head>
     <title>Task</title>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{../css/main.css}"/>
+    <script type="text/javascript" th:src="@{../js/app.js}"></script>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
@@ -14,8 +18,12 @@
         <div class="td-tasks">
             <div class="task-id"><td th:text="${task.id_task}" /></div>
             <div class="task-question"><td th:text="${task.question}" /></div>
+          <div id="answer" style="display: none;">
             <div class="task-answer"><td th:text="${task.answer}" /></div>
-            <div><td th:text="${task.category}" /></div>
+          </div>
+           <button id="button-answer" onclick="showAnswer()">
+               <i class="material-icons" style="font-size:27px;color:darkblue">help_outline</i>
+           </button>
         </div>
 
     </tr>

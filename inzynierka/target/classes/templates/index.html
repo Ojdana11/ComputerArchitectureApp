@@ -7,13 +7,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 </head>
 <body>
-<div layout:fragment="content" th:remove="tag">
-    <h1>Moduł edukacyjny wspomagający naukę Architektury Komputerów</h1>
-    <p>Poniżej znajdue się kilka wpisów dotyczących ciekawostek związanych z Architekturą Komputerów</p>
-    <ul>
-        <li><a href="/story" th:href="@{/story}">Historia systemów liczbowych</a></li>
-        <li><a href="/story" th:href="@{/story}">Standardy IEEE</a></li>
-    </ul>
+<div layout:fragment="content" th:remove="tag" >
+    <h1>Architektura Komputerów</h1>
+
+        <a href="/story" th:href="@{/story}"><div class="box-by-me">Historia systemów liczbowych</div></a>
+       <a href="/story" th:href="@{/story}"> <div class="box-by-me">Standardy IEEE</div></a>
 </div>
 </body>
 </html>

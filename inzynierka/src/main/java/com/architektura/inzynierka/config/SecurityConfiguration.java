@@ -54,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/",
                         "/register/**","/confirm","/task/**","/login",
                         "/calculator","/materials/**","/materials",
+                        "/egzam","/egzam/**",
                         "/js/**","/css/**","/img/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")

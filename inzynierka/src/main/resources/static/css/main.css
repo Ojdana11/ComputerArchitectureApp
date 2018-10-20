@@ -1,5 +1,7 @@
 h1 {
-    color: #ab0200;
+    color: white;
+    padding-left: 30%;
+    font-family: monospace;
 }
 
 footer {
@@ -8,9 +10,18 @@ footer {
     height: 50px;
     bottom: 0;
     width: 100%;
-    background-color: #ccc
+    background-color: #222;
+}
+.nav>li {
+    position: relative;
+    display: block;
+    padding-left: 10px;
 }
 
+.nav>li:hover {
+    background-color: #20201F;
+
+}
 footer p {
     padding: 15px;
 }
@@ -30,33 +41,40 @@ a:hover{
     text-decoration: none;
 }
 .box-by-me {
-    width: 200px;
-    height: 100px;
-    padding: 30px;
-    border: 2px groove black;
+    width: 150px;
+    height: 150px;
+    padding-top: 5%;
+    text-align: center;
+    border: 3px outset #ffffff;
     margin: 20px;
     float: left;
-    background-color: #267326;
-    border-radius: 10px;
+    color: white; !important;
+    font-family: cursive;
+    font-size: medium;
+    background-color: #000000;
+    border-radius: 34%;
+    transform-origin: bottom center;
+    text-decoration: dashed;
 }
+
 .box-by-me:hover{
-    background-color: darkgreen;
+    background-color: #2B4657;
+    border: 3px inset #cecece;
 }
 .td-tasks{
     min-height: 50px;
-    bottom: 0;
     width: 80%;
     background-color: #ccc;
     padding: 15px;
     float: none;
-    margin: 2px;
+    font-family: cursive;
+    text-align: center;
 }
 .task-id{
-    width: 10%;
+    width: 4%;
     float: left;
     background-color: white;
     margin: 2px;
-    padding-left: 10px;
 
 }
 .task-question{
@@ -73,6 +91,33 @@ a:hover{
     margin: 2px;
     padding-left: 10px;
 }
+
+#button-answer{
+
+    height: 35px;
+    width: 43px;
+    background-color: #ccc;
+    border-radius: 17%;
+}
+button:focus {outline:0;}
+
 .container-big{
-    min-height: 800px;
+    min-height: 500px;
+    width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.body{
+    background: transparent url(../img/background-blue.jpg) repeat-x fixed center top;
+    color: white;
+
+  /*  background-image: linear-gradient(to bottom right, #197080, #b0c1c0);*/
+}
+
+
+
+.navbar-inverse .navbar-nav>.active>a{
+    font-family: monospace;
 }
