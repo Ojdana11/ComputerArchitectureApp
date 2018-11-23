@@ -18,10 +18,11 @@
         <div class="td-tasks">
             <div class="task-id"><td th:text="${task.id_task}" /></div>
             <div class="task-question"><td th:text="${task.question}" /></div>
-          <div id="answer" style="display: none;">
+          <div th:id="${task.id_task}" style="display: none;">
             <div class="task-answer"><td th:text="${task.answer}" /></div>
           </div>
-           <button id="button-answer" onclick="showAnswer()">
+
+           <button id="button-answer" th:onclick="'javascript:showAnswer(' + ${task.id_task} + ')'">
                <i class="material-icons" style="font-size:27px;color:darkblue">help_outline</i>
            </button>
         </div>

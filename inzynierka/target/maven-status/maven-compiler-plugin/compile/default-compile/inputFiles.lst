@@ -5,6 +5,7 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\TasksStatusRepository.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Confirm.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\EmailService.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\algo\Number.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\utils\NumberSystem.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\utils\FieldMatch.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\CalculatorController.java
@@ -17,6 +18,7 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\TasksService.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\MvcConfig.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\ErrorController.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\algo\SystemU.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\UserRegistrationDto.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\TasksRepository.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\MaterialsController.java

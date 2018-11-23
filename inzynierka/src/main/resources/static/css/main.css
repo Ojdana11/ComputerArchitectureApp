@@ -1,5 +1,5 @@
 h1 {
-    color: white;
+    color: lightgray;
     padding-left: 30%;
     font-family: monospace;
 }
@@ -64,6 +64,7 @@ a:hover{
 .td-tasks{
     min-height: 50px;
     width: 80%;
+    margin-bottom: 2px;
     background-color: #ccc;
     padding: 15px;
     float: none;
@@ -73,20 +74,23 @@ a:hover{
 .task-id{
     width: 4%;
     float: left;
+    color: black;
     background-color: white;
     margin: 2px;
 
 }
 .task-question{
-    width: 40%;
+    width: 54%;
+    color: black;
     float: left;
     background-color: white;
     margin: 2px;
     padding-left: 10px;
 }
 .task-answer{
-    width: 30%;
+    width: 35%;
     float: left;
+    color: black;
     background-color: white;
     margin: 2px;
     padding-left: 10px;
@@ -99,7 +103,15 @@ a:hover{
     background-color: #ccc;
     border-radius: 17%;
 }
-button:focus {outline:0;}
+button:focus {
+    outline:0;
+    background-color: black;
+}
+
+button {
+    outline:0;
+    background-color: black;
+}
 
 .container-big{
     min-height: 500px;
@@ -110,8 +122,8 @@ button:focus {outline:0;}
     margin-left: auto;
 }
 .body{
-    background: transparent url(../img/background-blue.jpg) repeat-x fixed center top;
-    color: white;
+    background: black;/*transparent url(../img/background-blue.jpg) repeat-x fixed center top;*/
+    color: lightgray;
 
   /*  background-image: linear-gradient(to bottom right, #197080, #b0c1c0);*/
 }
