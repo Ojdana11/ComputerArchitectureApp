@@ -4,37 +4,44 @@
       layout:decorate="~{fragments/layout}">
 <head>
     <title>Admin</title>
-    <script type="text/javascript" th:src="@{/js/algo/algo.js}"></script>
+    <script type="text/javascript" th:src="@{/js/algo.js}"></script>
+    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <script type="text/javascript" th:src="@{/js/checker.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/algo.css}"/>
 </head>
 <body >
 <div layout:fragment="content" th:remove="tag">
-    <h1>Generowanie egzaminu</h1>
+    <h1>Parametry zadania</h1>
 
     <div id="boxes-to-generate-tasks">
-        <label for="operations">Typ operacji</label>:
-        <input id="operation_type" list="operations" name="operations">
-        <datalist id="operations">
-            <option value="+">
-            <option value="-">
-            <option value="*">
-            <option value="/">
-        </datalist>
+        <label for="operation_type">Typ operacji</label>:
+        <select onchange="showArgsNumberChoice();" id="operation_type">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+
     <label for="system_base_for_generate_task">Podstawa</label>:
         <input type="number" id="system_base_for_generate_task">
 
     <label for="arg_size_for_generate_task">Długość liczby</label>:
         <input type="number" id="arg_size_for_generate_task">
-
-    <label for="arg_number_for_generate_task">Liczba argumentów</label>:
+<div id="arg_number">
+         <label for="arg_number_for_generate_task">Liczba argumentów</label>:
         <input type="number" id="arg_number_for_generate_task">
-    <button th:onclick="|writeArguments()|">Losuj liczby</button>
-    <button th:onclick="|checkUsersAnswer()|">Sprawdź odpowiedź</button>
+</div>
+    <button th:onclick="|generateArguments()|">Losuj liczby</button>
+    <button th:onclick="|checkUsersAnswer(${'the_c_element_id'}); checkUsersAnswer(${'the_s_element_id'})|">Sprawdź odpowiedź</button>
     </div>
 
     <div id="fieldsForC"></div>
     <div id="arguments"></div>
+    <div id="partial"></div>
     <div id="results"></div>
+
 </div>
 </body>
 </html>

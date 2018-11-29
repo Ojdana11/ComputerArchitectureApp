@@ -3,107 +3,40 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>Registration</title>
+    <title>Admin</title>
+    <script type="text/javascript" th:src="@{/js/algo.js}"></script>
+    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/algo.css}"/>
 </head>
-<body>
-<div layout:fragment="content" th:remove="tag" class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+<body >
+<div layout:fragment="content" th:remove="tag">
+    <h1>Kalkulator</h1>
 
-            <div th:if="${param.success}">
-                <div class="alert alert-info">
-                    Po przeliczeniu: .......!
-                </div>
-            </div>
+    <div id="boxes-to-generate-tasks">
+        <label for="operation_type">Typ operacji</label>:
+        <select onchange="showArgsNumberChoice();" id="operation_type">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
 
-            <h3>Kalkulator</h3>
-            <form th:action="@{/calculator}" th:object="${calculator}" method="post">
+        <label for="system_base_for_generate_task">Podstawa</label>:
+        <input type="number" id="system_base_for_generate_task">
 
-                <p class="error-message"
-                   th:if="${#fields.hasGlobalErrors()}"
-                   th:each="error : ${#fields.errors('global')}"
-                   th:text="${error}">Validation error</p>
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('currentBase')}? 'has-error':''">
-                    <label for="currentBase" class="control-label">Obecna Baza</label>
-                    <input id="currentBase"
-                           class="form-control"
-                           th:field="*{currentBase}"/>
-                    <p class="error-message"
-                       th:each="error: ${#fields.errors('currentBase')}"
-                       th:text="${error}">Validation error</p>
-                </div>
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('targetBase')}? 'has-error':''">
-                    <label for="targetBase" class="control-label">Docelowa Baza</label>
-                    <input id="targetBase"
-                           class="form-control"
-                           th:field="*{targetBase}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('targetBase')}"
-                       th:text="${error}">Validation error</p>
-                </div>
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('totalPart')}? 'has-error':''">
-                    <label for="totalPart" class="control-label">Część całkowita</label>
-                    <input id="totalPart"
-                           class="form-control"
-                           th:field="*{totalPart}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('totalPart')}"
-                       th:text="${error}">Validation error</p>
-                </div>
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('fraction')}? 'has-error':''">
-                    <label for="fraction" class="control-label">Część ułamkowa</label>
-                    <input id="fraction"
-                           class="form-control"
-                           th:field="*{fraction}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('fraction')}"
-                       th:text="${error}">Validation error</p>
-                </div> <!--
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('currentSystem')}? 'has-error':''">
-                    <label for="currentSystem" class="control-label">Obecny system</label>
-                    <input id="currentSystem"
-                           class="form-control"
-                           th:field="*{currentSystem}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('currentSystem')}"
-                       th:text="${error}">Validation error</p>
-                </div>
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('targetSystem')}? 'has-error':''">
-                    <label for="targetSystem" class="control-label">Docelowy system</label>
-                    <input id="targetSystem"
-                           class="form-control"
-                           th:field="*{targetSystem}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('targetSystem')}"
-                       th:text="${error}">Validation error</p>
-                </div>-->
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('load')}? 'has-error':''">
-                    <label for="load" class="control-label">Polaryzacja</label>
-                    <input id="load"
-                           class="form-control"
-                           th:field="*{load}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('load')}"
-                       th:text="${error}">Validation error</p>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Przelicz</button>
-                </div>
-
-            </form>
-        </div>
+        <label for="arg_size_for_generate_task">Długość liczby</label>:
+        <input type="number" id="arg_size_for_generate_task">
+        <button th:onclick="|generateBoxesForUsersTask()|">Generuj pola</button>
+        <button th:onclick="|calculateUsersTask()|">Oblicz</button>
     </div>
+
+    <div id="fieldsForC"></div>
+    <div id="arguments"></div>
+    <div id="partial"></div>
+    <div id="results"></div>
+
 </div>
-
-<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
-<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-
 </body>
 </html>
