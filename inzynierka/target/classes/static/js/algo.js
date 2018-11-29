@@ -70,7 +70,7 @@ algorithm.addition = function(arguments, max_size, base){
         else{
             if(the_s[i]<0){
                 the_cs[i+1]=(-1)*Math.ceil(((-1)*the_s[i])/base);
-                the_s[i]= the_cs[i+1]*base+the_s[i];
+                the_s[i]= (-1)*the_cs[i+1]*base+the_s[i];
             }else{ the_cs[i+1]=0; }
 
         }
@@ -124,7 +124,7 @@ algorithm.multiplication = function (arg_up,arg_down, max_size, base){
 
     for(var part_arg=0;part_arg<arg_down.length;part_arg++)
     {
-        for(var ext=arg_up.length;ext<max_size;ext++){
+        for(var ext=partial_sum[part_arg].length;ext<max_size;ext++){
             partial_sum[part_arg][ext] = partial_sum[part_arg][partial_sum[part_arg].length-1];
         }
     }
