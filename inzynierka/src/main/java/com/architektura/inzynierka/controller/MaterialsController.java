@@ -10,4 +10,9 @@ public class MaterialsController {
     public String index(){
         return "materials/index";
     }
+
+    @GetMapping("/materials/addition")
+    public String addition(){
+        return "materials/addition";
+    }
 }

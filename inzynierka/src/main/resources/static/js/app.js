@@ -59,7 +59,7 @@ function generateArguments()
     //[0] - cs, [1] -s
     var final_results = algorithm.countResults(arg_data, max_args_size+1, base);
 
-    if(operation_type == "*" || operation_type == "/"){
+    if(operation_type == "*"){
         generateInputBoxes(final_results[0][1],"results",(arg_last+arg_second_last+2), "res_no_");
         generateInputBoxes(final_results[0][0],"fieldsForC", (arg_last+arg_second_last+2), "the_c_no_");
         var divs_content = "";
@@ -73,8 +73,13 @@ function generateArguments()
         document.getElementById("partial").innerHTML = divs_content;
     }
     else{
-        generateInputBoxes(final_results[1],"results",max_args_size+1, "res_no_");
-        generateInputBoxes(final_results[0],"fieldsForC", max_args_size+1, "the_c_no_");
+        if(operation_type!=="/"){
+            generateInputBoxes(final_results[1],"results",max_args_size+1, "res_no_");
+            generateInputBoxes(final_results[0],"fieldsForC", max_args_size+1, "the_c_no_");
+        }
+        else{
+            generateInputBoxes(final_results[1],"results", final_results[1].length, "res_no_");
+        }
         document.getElementById("partial").innerHTML = "";
     }
 }
@@ -97,7 +102,7 @@ function checkUsersAnswer(element_id){
 
     if(operation_type == "*") number_of_boxes = number_of_boxes*2;
 
-    for(var i=0; i<number_of_boxes; i++){
+    for(var i=0; i<number_of_boxes+1; i++){
         if(document.getElementById(element_id+i)!= null){
 
             if((document.getElementById(element_id+i).name != document.getElementById(element_id+i).value) && document.getElementById(element_id+i).name!="NaN")
