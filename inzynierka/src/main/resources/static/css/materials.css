@@ -1,0 +1,18 @@
+#description{
+    width: 80%;
+    font-size: 16px;
+}
+#notes_index{
+    width: 20%;
+}
+
+.square, .circle {
+    color: #FF1461;
+    pointer-events: none;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    margin: 1px;
+    background-color: currentColor;
+    font-size: 12px;
+}

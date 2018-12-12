@@ -7,7 +7,7 @@ algorithm.countResults = function(arguments, max_size, base){
     for(var args_number=0;args_number<arguments.length; args_number++){
         arg_last = arguments[args_number][arguments[args_number].length-1];
         arg_second_last= arguments[args_number][arguments[args_number].length-2];
-        last_arg_number[args_number]= algorithm.checkExtension(arg_last ,arg_second_last, base);
+        last_arg_number[args_number]= agloHelpers.checkExtension(arg_last ,arg_second_last, base);
     }
 
     if(operation_type==="+" || operation_type==="-"){
@@ -36,23 +36,6 @@ algorithm.countResults = function(arguments, max_size, base){
 
 };
 
-algorithm.checkExtension = function(last_value, second_last_value,  base){
-
-    if(base%2===0){
-        if(last_value>=base/2) {return base-1;}
-        else{ return 0;}
-    }
-
-    if(base%2!==0){
-        if(last_value>=(base-1)/2){
-            if(last_value===(base-1)/2 ){
-                if(second_last_value>=(base-1)/2){return base-1;}
-                else{return 0;}
-            }else{return base-1;}
-        }else{return 0;}
-    }
-
-};
 algorithm.addition = function(arguments, max_size, base){
 
     var the_cs =[0], the_s =[];
@@ -135,10 +118,10 @@ algorithm.multiplication = function (arg_up,arg_down, max_size, base){
 
 };
 
-algorithm.division = function(dividend, divisor, base){
+algorithm.division = function(divisor,dividend, base){
 
     var divisor_size= divisor.length;
-    if(dividend.length<=divisor.length)return [[0],[0]];
+    if(dividend.length<=divisor.length)return [[0],[0], [0]];
     var new_dividend=dividend;
     var divisor_matrix = [[0,0], divisor];
     for(var i=0;i<divisor_size;i++){
@@ -156,8 +139,8 @@ algorithm.division = function(dividend, divisor, base){
         divisor_matrix[i] = tmp_res_from_multi[0][1];
     }
 
-    //division matirix zaminić na wartości w 10 systemie (dodatnie) i porównywać
-    if(dividend[dividend.length-1]!==divisor[divisor.length-1])
+    var diff_sign=dividend[dividend.length-1]!==divisor[divisor.length-1];
+    if(diff_sign)
     {
         x = dividend.length - divisor.length+1;
         var front_part_dividend =[];
@@ -177,89 +160,51 @@ algorithm.division = function(dividend, divisor, base){
     }
 
 
-
+    dividends_portion[0] = [];
     for(var j=0;j<divisor_size;j++)
     {
-        dividends_portion[j] = new_dividend[x+j];
+        dividends_portion[0][j] = new_dividend[x+j];
     }
 
     for(var i=0;i<=number_of_operations;i++){
         //odejmowanie
-        result[i]=algorithm.divisor_compare(dividends_portion, divisor_matrix, base);
-        if(i==number_of_operations)break;
-        dividends_portion = algorithm.subtraction([dividends_portion, divisor_matrix[result[i]]], dividends_portion.length, base);
-        dividends_portion = dividends_portion[1];
-        dividends_portion.splice(dividends_portion.length-1, 1);
-        dividends_portion.unshift(new_dividend[x-i-1]);
+        result[i]=agloHelpers.divisor_compare(dividends_portion[i], divisor_matrix, base);
+       // if(i==number_of_operations)break;
+        dividends_portion[i+1]=[];
+        dividends_portion[i+1] = algorithm.subtraction([dividends_portion[i], divisor_matrix[result[i]]], dividends_portion[i].length, base);
+        dividends_portion[i+1] = dividends_portion[i+1][1];
+        dividends_portion[i+1].splice(dividends_portion[i+1].length-1, 1);
+        dividends_portion[i+1].unshift(new_dividend[x-i-1]);
 
     }
-
-    return [[0],result.reverse()];
+    if(diff_sign) result[0]=base-1;
+    return [[0],result.reverse(), dividends_portion];
 
 
 };
 
-algorithm.divisor_compare = function(dp, divisor_matrix, base) {
+algorithm.exchangeTotal = function(number, currentBase, targetBase){
 
-    //dividends_portion - zamiana na system normalny dziesiętny - dodatnia ma być
-    var dividends_portion = dp;
-    var numbers_length_max = Math.max(divisor_matrix[divisor_matrix.length-1].length, dividends_portion.length);
-    var numbers_length_min = Math.min(divisor_matrix[divisor_matrix.length-1].length, dividends_portion.length);
-    var extra_extension = numbers_length_max - numbers_length_min;
+    var last_rest=1,i=0, totalInDiv=targetBase;
+    var divisor =[];
 
-    for(var i=0; i<extra_extension;i++){
-        if(dividends_portion[numbers_length_max-1]=== undefined){
-            dividends_portion[dividends_portion.length+i] = dividends_portion[dividends_portion.length-1];
-        }
-
-        divisor_matrix.forEach(function(argument, index, array){
-            if(argument[numbers_length_max-1]===undefined){
-                argument[argument.length+i] = argument[argument.length-1]
-            }
-        })
-
+//zapis targetBase w systemie currentBase
+    while(totalInDiv!==0){
+        divisor[i]= targetBase%currentBase;
+        totalInDiv = Math.floor(totalInDiv/currentBase);
+        i++;
     }
+    divisor[i]=0;
 
-    switch (dividends_portion[dividends_portion.length-1]){
-        case 0:
-            for(var i=1; i<divisor_matrix.length;i++){
-                for(var j=dividends_portion.length-1; j>=0;j--){
+    var result =[], partial=[];
+    i=0;
+    totalInDiv=number;
+    do{
+        partial[i]=algorithm.division(totalInDiv,divisor,currentBase);
+        totalInDiv =partial[i][1];
+        last_rest = partial[i][2];
+        i++;
 
-                    if(divisor_matrix[i][j]>dividends_portion[j]) return i-1;
-                    if(divisor_matrix[i][j]<dividends_portion[j]) break;
-                    if(divisor_matrix[i][j]==dividends_portion[j]){
-                        for(var k = j;k>=0;k--){
-                            if(divisor_matrix[i][k]>dividends_portion[k]) return i-1;
-                            if(divisor_matrix[i][k]<dividends_portion[k])  break;
-                        }
-                    }
-                }
-            }
-            return 0;
-        case (base-1):
-            for(var i=1; i<divisor_matrix.length;i++){
-                for(var j=dividends_portion.length-1; j>=0;j--){
-                    if(divisor_matrix[i][j]<dividends_portion[j]) return i-1;
-                    if(divisor_matrix[i][j]>dividends_portion[j]) break;
-                    if(divisor_matrix[i][j]==dividends_portion[j]){
-                        for(var k = j;k>=0;k--){
-                            if(divisor_matrix[i][k]<dividends_portion[k]) return i-1;
-                            if(divisor_matrix[i][k]>dividends_portion[k]) break;
-                        }
-                    }
-                }
-            }
-            return base-1;
-        default:
-            console.log('something wrong');
-            return -1;
-    }
-
-};
-
-algorithm.number_compare = function(number_one, number_two){
-
-};
-algorithm.countAbsoluteValue = function(number, base){
+    }while(last_rest!==0);
 
 };

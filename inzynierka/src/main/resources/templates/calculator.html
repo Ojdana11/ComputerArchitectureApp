@@ -5,14 +5,27 @@
 <head>
     <title>Admin</title>
     <script type="text/javascript" th:src="@{/js/algo.js}"></script>
-    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <script type="text/javascript" th:src="@{/js/algoHelpers.js}"></script>
+    <script type="text/javascript" th:src="@{/js/generator.js}"></script>
+    <script type="text/javascript" th:src="@{/js/checker.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/algo.css}"/>
 </head>
 <body >
 <div layout:fragment="content" th:remove="tag">
-    <h1>Kalkulator</h1>
+    <div id="content_cat">
+        <h3>Kategoria zadania:</h3><br>
+        <div id="category">
+            <button class="task_category" id="cat_arithmetic"
+                    onclick="checkCategory(this), showElements(['boxes-to-generate-tasks']), hideElements(['exchange'])">arytmetyka</button>
+            <button class="task_category" id="cat_exchange_base"
+                    onclick="checkCategory(this), showElements(['exchange']), hideElements(['boxes-to-generate-tasks'])">konwersja podstawy</button>
+            <button class="task_category" id="cat_fraction_periodic"  onclick="checkCategory(this)">ułamek okresowy</button>
+            <button class="task_category" id="cat_ieee"  onclick="checkCategory(this)">IEEE 754</button>
+        </div>
+
+    </div>
 
     <div id="boxes-to-generate-tasks">
         <label for="operation_type">Typ operacji</label>:
@@ -31,7 +44,23 @@
         <button th:onclick="|generateBoxesForUsersTask()|">Generuj pola</button>
         <button th:onclick="|calculateUsersTask()|">Oblicz</button>
     </div>
+    <div id="exchange">
+        <label for="numbers_part">część</label>:
+        <select onchange="showArgsNumberChoice();" id="numbers_part">
+            <option value="+">całkowita</option>
+            <option value="-">ułamkowa</option>
+        </select>
+        <label for="current_base">podstawa</label>:
+        <input type="number" id="current_base">
 
+        <label for="target_base">docelowa podstawa</label>:
+        <input type="number" id="target_base">
+        <label for="arg_size_for_exchange">długość liczby</label>:
+        <input type="number" id="arg_size_for_exchange">
+
+        <button th:onclick="|generateArguments()|">losuj</button>
+        <button th:onclick="|checkUsersAnswer(${'the_c_element_id'}); checkUsersAnswer(${'the_s_element_id'})|">sprawdź</button>
+    </div>
     <div id="fieldsForC"></div>
     <div id="arguments"></div>
     <div id="partial"></div>

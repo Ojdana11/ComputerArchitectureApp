@@ -4,10 +4,24 @@
       layout:decorate="~{fragments/layout}">
 <head>
     <title>Secured</title>
+    <script type="text/javascript" th:src="@{/js/anime/anime.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ownAnime.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/materials.css}"/>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
-    <h1>Materiały dydaktyczne</h1>
+    <div id="cssSelector">
+        <div class="line">
+            <div class="square el"></div>
+        </div>
+    </div>
+    <h1>materiały dydaktyczne</h1>
+
+    <a th:href="@{/materials/addition}">
+        <div class="box-by-me">podstawy</div>
+    </a>
 
     <a th:href="@{/materials/addition}">
         <div class="box-by-me">dodawanie / odejmowanie</div>
@@ -21,7 +35,7 @@
     </a>
 
     <a  th:href="@{/task/all}">
-        <div class="box-by-me">pierwiastkowanie</div>
+        <div class="box-by-me">pierwiastek</div>
     </a>
 
     <a th:href="@{/task/all}">
@@ -29,6 +43,9 @@
     </a>
     <a  th:href="@{/task/all}">
         <div class="box-by-me">zmienny przecinek</div>
+    </a>
+    <a  th:href="@{/task/all}">
+        <div class="box-by-me">ułamek okresowy</div>
     </a>
 </div>
 

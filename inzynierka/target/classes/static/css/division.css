@@ -1,0 +1,53 @@
+.division_letter
+{
+    width: 40px;
+    height: 35px;
+    font-size: 19px;
+    text-align: center;
+    margin: 1px;
+    border: 3px solid gray;
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+#division{
+    width: 100%;
+    display: none;
+}
+
+#division_content{
+    width: 75%;
+    background-color: black;
+    float: left;
+}
+
+#divider_matrix{
+    width: 20%;
+    background-color: black;
+    float: right;
+    border: 2px solid white;
+}
+
+#division_arguments{
+    border-top: 2px solid white;
+    min-height: 50px;
+    padding: 5px;
+    float: left;
+    margin-left: 37px;
+}
+
+#division_partial{
+
+    width: 100%;
+    float:left;
+}
+
+#division_results{
+    /* margin-right: 439px; */
+    float: left;
+    min-width: 50%;
+    padding-right: 35%;
+    align-content: left;
+}

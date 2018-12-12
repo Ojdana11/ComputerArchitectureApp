@@ -1,7 +1,7 @@
 .letter
 {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 35px;
     font-size: 19px;
     text-align: center;
     margin: 1px;
@@ -11,10 +11,21 @@
     border-radius: 5px;
 
 }
+
+h3{
+    padding-left: 14px;
+}
+#content_cat{
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
 #boxes-to-generate-tasks{
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
+    display: none;
+    float: left;
+    font-size: 16px;
 }
 #boxes-to-generate-tasks input{
     color: black;
@@ -35,6 +46,8 @@
 input{
     color: black;
 }
+
+
 input[type='number'] {
     -moz-appearance:textfield;
 }
@@ -63,6 +76,32 @@ input::-webkit-inner-spin-button {
     user-select: none;
 }
 
+.task_category{
+    float:left;
+    font-size: 20px;
+    max-resolution: 5px;
+    padding: 5px;
+    width: 25%;
+    text-align: center;
+    border: 2px solid white;
+    background-color: black;
+
+}
+
+.task_category:hover{
+    background-color: #5d706e;
+}
+.task_category button{
+    border: none;
+}
+.task_category button::selection{
+    background-color: #5d706e;
+}
+#category {
+
+    width: 100%;
+    height: 80px;
+}
 /* The actual popup */
 .popup .popuptext {
     visibility: hidden;
@@ -95,4 +134,28 @@ input::-webkit-inner-spin-button {
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+#exchange {
+    display: none;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#exchange input {
+    color: black;
+    background-color: white;
+    width: 90px;
+    margin-right: 20px;
+}
+
+#exchange select{
+    color: black;
+    background-color: white;
+
+    margin-right: 20px;
+}
+
+#fieldsForC{
+    margin-top: 25px;
 }

@@ -3,45 +3,95 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>Admin</title>
+    <title>Generator zadań</title>
+    <script type="text/javascript" th:src="@{/js/algoHelpers.js}"></script>
     <script type="text/javascript" th:src="@{/js/algo.js}"></script>
-    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+    <script type="text/javascript" th:src="@{/js/generator.js}"></script>
     <script type="text/javascript" th:src="@{/js/checker.js}"></script>
+    <script type="text/javascript" th:src="@{/js/shower.js}"></script>
+    <script type="text/javascript" th:src="@{/js/calculator.js}"></script>
+    <script type="text/javascript" th:src="@{/js/theGlobalVar.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/algo.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/division.css}"/>
 </head>
 <body >
 <div layout:fragment="content" th:remove="tag">
-    <h1>Parametry zadania</h1>
+    <div id="content_cat">
+        <h3>Kategoria zadania:</h3><br>
+        <div id="category">
+            <button class="task_category" id="cat_arithmetic"
+                    onclick="checker.checkCategory(this), shower.showElements(['boxes-to-generate-tasks']), shower.hideElements(['exchange'])">arytmetyka UX</button>
+            <button class="task_category" id="cat_exchange_base"
+                    onclick="checker.checkCategory(this), shower.showElements(['exchange']), shower.hideElements(['boxes-to-generate-tasks'])">konwersja podstawy</button>
+            <button class="task_category" id="cat_fraction_periodic"  onclick="checker.checkCategory(this)">ułamek okresowy</button>
+            <button class="task_category" id="cat_ieee"  onclick="checker.checkCategory(this)">IEEE 754</button>
+        </div>
 
+    </div>
+
+    <h3>Parametry zadania:</h3>
     <div id="boxes-to-generate-tasks">
-        <label for="operation_type">Typ operacji</label>:
-        <select onchange="showArgsNumberChoice();" id="operation_type">
+        <label for="operation_type">operacja</label>:
+        <select onchange="shower.showArgsNumberChoice();" id="operation_type">
             <option value="+">+</option>
             <option value="-">-</option>
             <option value="*">*</option>
             <option value="/">/</option>
         </select>
 
-    <label for="system_base_for_generate_task">Podstawa</label>:
+    <label for="system_base_for_generate_task">podstawa</label>:
         <input type="number" id="system_base_for_generate_task">
 
-    <label for="arg_size_for_generate_task">Długość liczby</label>:
+    <label for="arg_size_for_generate_task">długość liczby</label>:
         <input type="number" id="arg_size_for_generate_task">
 <div id="arg_number">
-         <label for="arg_number_for_generate_task">Liczba argumentów</label>:
+         <label for="arg_number_for_generate_task">liczba argumentów</label>:
         <input type="number" id="arg_number_for_generate_task">
 </div>
-    <button th:onclick="|generateArguments()|">Losuj liczby</button>
-    <button th:onclick="|checkUsersAnswer(${'the_c_element_id'}); checkUsersAnswer(${'the_s_element_id'})|">Sprawdź odpowiedź</button>
+    <button th:onclick="|generator.generateArguments()|">losuj</button>
+    <button th:onclick="|checker.checkUsersAnswer(${'the_c_element_id'}); checker.checkUsersAnswer(${'the_s_element_id'})|">sprawdź</button>
     </div>
 
+    <div id="exchange">
+        <label for="numbers_part">część</label>:
+        <select onchange="shower.showArgsNumberChoice();" id="numbers_part">
+            <option value="+">całkowita</option>
+            <option value="-">ułamkowa</option>
+        </select>
+        <label for="current_base">podstawa</label>:
+        <input type="number" id="current_base">
+
+        <label for="target_base">docelowa podstawa</label>:
+        <input type="number" id="target_base">
+        <label for="arg_size_for_exchange">długość liczby</label>:
+        <input type="number" id="arg_size_for_exchange">
+
+        <button th:onclick="|generator.generateArguments()|">losuj</button>
+        <button th:onclick="|checker.checkUsersAnswer(${'the_c_element_id'}); checker.checkUsersAnswer(${'the_s_element_id'})|">sprawdź</button>
+    </div>
+    <div id="other_operation_divs">
     <div id="fieldsForC"></div>
     <div id="arguments"></div>
     <div id="partial"></div>
     <div id="results"></div>
+    </div>
 
+    <div id="division">
+        <div id="division_results">
+
+        </div>
+        <div id="division_content">
+            <div id="division_arguments"></div>
+            <div id="division_partial"></div>
+        </div>
+        <div id="divider_matrix">
+
+        </div>
+
+    </div>
+</div>
 </div>
 </body>
 </html>
