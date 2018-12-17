@@ -1,0 +1,12 @@
+W tym rozdziale zostanie opisany algorytm konwersji podstawy systemu liczbowego. Rozróżnia się dwa rodzaje konwersji: części całkowitej i części ułamkowej.
+        1. Konwersja części całkowitej liczby w dowolnym systemie polega na dzieleniu tej
+        liczby przez podstawę nowego systemu zapisaną w starym systemie. Resztę z dzielenia tej liczby
+        zapisujemy, a następnie powtarzamy całość dla całkowitego wyniku dzielenia do czasu, aż dotrzemy
+        do końca. Naszą liczbą są wszystkie reszty przeczytane "od dołu".
+
+        2. Konwersja części ułamkowej liczby w dowolnym systemie polega na pomnożeniu
+           tej części przez podstawe nowego systemu (oczywiście, tak jak w przypadku konwersji
+           części całkowitej, zapisana w starym systemie, tzn. 10 w systemie o podstawie
+           9 będzie zapisane jako 11). Część całkowita z mnożenia zapisujemy, a następnie
+           powtarzamy całość dla części ułamkowej wyniku do czasu, aż otrzymamy
+           pożądaną przez nas ilość cyfr lub aż zaczniemy otrzymywac same zera.

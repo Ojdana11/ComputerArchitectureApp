@@ -1,0 +1,9 @@
+{
+  "exchange": "exchange",
+  "multiplication": "multiplication",
+  "addition": "addition",
+  "division": "division",
+  "root": "root",
+  "decimal": "decimal",
+  "fraction": "fraction"
+}

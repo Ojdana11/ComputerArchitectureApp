@@ -18,7 +18,7 @@
 }
 
 #division_content{
-    width: 75%;
+    width: 90%;
     background-color: black;
     float: left;
 }
@@ -35,7 +35,7 @@
     min-height: 50px;
     padding: 5px;
     float: left;
-    margin-left: 37px;
+    margin-left: 80px;
 }
 
 #division_partial{

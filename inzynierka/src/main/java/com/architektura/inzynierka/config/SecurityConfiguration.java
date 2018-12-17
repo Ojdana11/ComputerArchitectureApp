@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/",
                         "/register/**","/confirm","/task/**","/login",
-                        "/calculator","/materials/**","/materials",
+                        "/calculator","/materials/**","/materials","/algoTasks", "/algoTasks/**",
                         "/egzam","/egzam/**",
                         "/js/**","/css/**","/img/**",
                         "/webjars/**").permitAll()

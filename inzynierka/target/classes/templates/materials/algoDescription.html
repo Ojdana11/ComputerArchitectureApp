@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Konwersja podstawy</title>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/anime/anime.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ownAnime.js}"></script>
+    <script type="text/javascript" th:src="@{/js/materialsDrag.js}"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/materials.css}"/>
+</head>
+<body >
+<div layout:fragment="content" th:remove="tag">
+
+    <div class="description" th:if="${description}=='addition'">
+        1. DODAWANIE W RÓżNYCH SYSTEMACH <br><br>
+        Dodawanie opiera się na dwóch wzorach:<br>
+        si = xi + yi + ci, gdy xi + yi + ci < B, wtedy c(i+1) =0; <br>
+        si = xi + yi + ci - B, gdy xi + yi + ci >= B, wtedy c(i+1) =1; <br>
+        Gdzie: <br>
+        xi - wartość cyfry pierwszej liczby na pozycji i;<br>
+        yi - wartość cyfry drugiej liczby na pozycji i;<br>
+        ci - wartość przeniesienia z pozycji poprzedniej;<br>
+        c(i+1) - wartość przeniesienia z obecnej pozycji;<br>
+        B - podstawa systemu;<br><br>
+        Przykład: dodamy dwie liczby w systemie N3 : 21210 oraz 22121:<br>
+        0 + 1 + 0 = 1 − 0 * 3 = 1<br>
+        1 + 2 + 0 = 3 − 1 * 3 = 0, bo 3=B<br>
+        2 + 1 + 1 = 4 − 1 * 3 = 1, bo 4>B<br>
+        1 + 2 + 1 = 4 − 1 * 3 = 1<br>
+        2 + 2 + 1 = 5 − 1 * 3 = 2<br>
+        Wynikiem naszego dodawania jest liczba 21101. Jednak jak możemy zauważyć,
+        nasza liczba nie zmieściła się w zadanej ilości cyfr(została wygenerowana dodatkowa
+        1 przed liczbą). Takie zjawisko nosi nazwe nadmiaru. Pojawia się on,
+        kiedy na najstarszej pozycji zostaje wygenerowana pożyczka. W przypadku dodawania
+        nadmiar można wykryć następująco:<br>
+
+        xi + yi > B − 1 − nadmiar zawsze wystąpi, jest to tak zwana propagacja pożyczki <br>
+        xi + yi = B − 1 − nadmiar wystapi, jeśli xi−1 + yi−1 > B − 1, jest to tak zwane przeniesienie pożyczki<br>
+        xi + yi < B − 1 − nadmiar nigdy nie nastąpi, jest to tak zwane wygaszenie pożyczki<br>
+                  Należy pamietać, że w systemie uzupełnieniowym liczby ujemne po lewej stronie
+                  mają nieskończoną ilość cyfr B-1.<br><br>
+
+        2. ODEJMOWANIE W RÓżNYCH SYSTEMACH<br><br>
+        Odejmowanie opiera się na dwóch wzorach:<br>
+        si = xi − yi − ci gdy xi − yi − ci> = 0, wtedy ci+1 = 0;<br>
+        si = xi − yi − ci + B gdy xi − yi − ci<0, wtedy ci+1 = 1; <br>
+        Gdzie:<br>
+        xi − wartość cyfry pierwszej liczby na pozycji i<br>
+        yi − wartość cyfry drugiej liczby na pozycji i<br>
+        ci − wartość przeniesienia z poprzedniej pozycji<br>
+        ci+1 − wartość przeniesienia z obecnej pozycji<br>
+        B − podstawa systemu<br>
+        Przykład: odejmiemy od siebie dwie liczby w systemie N5 : 14302 oraz 42310:<br>
+        2 − 0 − 0 = 2 + 0 * 5 = 2<br>
+        0 − 1 − 0 = −1 + 1 * 5 = 4, bo -1<0<br>
+        3 − 3 − 1 = −1 + 1 * 5 = 4<br>
+        4 − 2 − 1 = 1 + 0 * 5 = 1<br>
+        1 − 4 − 0 = −3 + 1 * 5 = 2<br>
+        Wynikiem naszego dodawania jest liczba 21442. Jednak jak możemy zauważyć,
+        nasza liczba nie zmieściła sie w zadanej ilości cyfr(została wygenerowana dodatkowa
+        1 przed liczba). Takie zjawisko nosi nazwe nadmiaru. Pojawia sie on, kiedy
+        na najstarszej pozycji zostaje wygenerowana pożyczka. W przypadku odejmowania
+        nadmiar mozna wykryc nastepujaco:<br>
+
+        xi − yi < 0 − nadmiar zawsze wystąpi, jest to tak zwana propagacja pożyczki<br>
+        xi − yi = 0 − nadmiar wystąpi, jeśli xi − yi < 0, jest to tak zwane przeniesienie pożyczki<br>
+        xi − yi>0 − nadmiar nigdy nie nastąpi, jest to tak zwane wygaszenie pożyczki<br>
+        Należy pamietać, że w systemie uzupełnieniowym liczby ujemne po lewej stronie
+        maja nieskończoną ilość cyfr B-1.<br>
+    </div>
+    <div class="description" th:if="${description}=='multiplication'">
+        MNOżENIE W RÓżNYCH SYSTEMACH<br><br>
+        Iloczyn k cyfrowej mnożnej i m cyfrowego mnożnika ma k+m cyfr. Algorytm
+        mnożenia pozycyjnego jest chyba wszystkim znany: przemnażamy każdż cyfrę
+        mnożnika przez mnożnż, sumując potem wszystkie iloczyny. Przykład: dwie liczby
+        w systemie N6: 5421 oraz 33:<br>
+        &nbsp;&nbsp;5421<br>
+        &nbsp;&nbsp;x 33<br>
+        &nbsp; 25103<br>
+        25103<br>
+        320133<br>
+        Pamiętamy oczywiście, że w przypadku systemów uzupełnieniowych po lewej
+        stronie mogą wystąpić same B-1. Te same liczby w systemie U6 dadzą zgoła
+        inny wynik:<br>
+        (5)5421<br>
+        x (5)33<br>
+        555103<br>
+        55103<br>
+        0135 <= traktujemy (5) jako -1, więc odejmujemy mnożną od 0<br>
+        004033<br>
+        Jako, że wynik wyszedł dodatni możemy mieć podejrzenie, że policzyliśmy prawidłowo. Ten sposób mnożenia to mnożenie z rozszerzeniem mnożnkia. Bez
+        rozszerzenia mnożnika musielibyśmy potraktować 3 jako liczbę ujemną. Nasze
+        działanie wygladałoby tak:<br>
+        (5)5421<br>
+        x (5)33<br>
+        555103<br>
+        00453<= traktujemy (3) jako -3, więc odejmujemy mnożną x3 od 0<br>
+        004033<br>
+        Jak widać w obu przypadkach otrzymaliśmy poprawny wynik.
+    </div>
+    <div class="description" th:if="${description}=='division'">
+        Wzór na dzielenie: X = QD + R, <br>
+        gdzie X - dzielna,<br>
+        D - dzielnik,<br>
+        Q -wynik, <br>
+        R - reszta mniejsza niz D.<br>
+        Dzielenie w systemie naturalnym najlepiej zrobić przez
+        tabelkę: rozpisujemy tabelkę z kolejnymi krotnościami dzielnika (do B), a następnie
+        sprawdzamy, między którymi wartościami się mieścimy. Przykład: w N5
+        podzielimy 4322 przez 23:<br>
+        Tabelka:<br>
+        0 * 23 = 0<br>
+        1 * 23 = 23<br>
+        2 * 23 = 101<br>
+        3 * 23 = 124<br>
+        4 * 23 = 202<br>
+        10(5) * 23 = 230<br>
+        Z tabelką dzielenie jest proste:<br><br>
+
+        <img th:src="@{/img/dzielenie_no1.png}"/><br><br>
+
+        Przy dzieleniu w systemie uzupełnieniowym posługujemy się prostym algorytmem.
+        Najpierw przesuwamy dzielnik w lewo tak, aby jego wartość bezwzględna
+        była większa, niż dzielnej. Następnie, jeśli znaki dzielnej i dzielnika są różne,
+        dodajemy dzielnik do dzielnej, a pierwsza liczba naszego wyniku jest -1 (B-1).
+        Jeśli znaki są takie same, pierwsza liczba naszego wyniku jest 0, a my nic nie
+        dodajemy. Następnie postępujemy tak samo, jak w przypadku dzielenia w systemach
+        naturalnych. Przykład: Podzielimy w U6 52313 przez 012:<br><br>
+        <img th:src="@{/img/dzielenie_no2.png}"/><br><br>
+
+    </div>
+
+    <div class="description" th:if="${description}=='root'">
+        Proces pierwiastkowania sprowadza się do wzoru (2QB + q)q< = (A − Q2)B2,
+        gdzie:<br>
+        B - podstawa systemu<br>
+        q - szukana przez nas liczba spełniajaca równanie<br>
+        Q - poprzednia wygenerowana przez nas liczba<br>
+        Mając podaną liczbę w dowolnym systemie skalujemy ją w taki sposób, aby
+        stała się ułamkiem mniejszym od 1, ale równocześnie liczba miejsc, o które
+        przesuneliśmy liczbę była parzysta (parzyste potęgi podstawy można po prostu
+        podzielić na dwa, przez co bedzie łatwiej). Następnie jedyne, co robimy,
+        to podstawiamy do podanego wyżej wzoru kolejne wygenerowane przez nas cyfry,
+        zaczynając od cyfry 0, ponieważ nasz pierwiastek będzie postaci (B^k2)*0, wygenerowane przez nas pozostałe cyfry. Warto odejmować od naszej początkowej
+        cyfry kolejne kroki, aby się nie zgubić. Przykład: spierwiastkujemy w systemie
+        U10 liczbe 0324123:<br>
+        Naszą liczbę możemy zapisać jako 10^6 * 0,324123.
+        Pierwiastek z takiej liczby będzie postaci 10^3 * 0, liczby wygenerowane przez nas.
+        Pierwszym Q jest 0, więc odejmujemy go od liczby, skalujemy w prawo
+        o 2 miejsca i obliczamy q z wzoru(2*0*10+q)q < = 32, tak więc naszym q z tego równania jest 5.
+        Z poprzedniego równania mamy Q = 5, więc odejmując 52 od liczby i skalując w prawo o
+        dwa miejsca będziemy mieli liczbę 741. Szukamy dla niej rozwiązania równania (2*
+        5 * 10 + q)q < = 741 Rozwiązaniem będzie liczba 6.
+        Z poprzedniego równania mamy Q = 6, więc odejmując 62 od liczby i skalując w prawo o dwa
+        miejsca będziemy mieli liczbę 70523. Szukamy dla niej rozwiązania równania (2*
+        6 * 10 + q)q < = 70523 Rozwiazaniem będzie liczba 9
+        ponieważ jest to największa cyfra, jaką mamy w systemie U10.
+        Nasz wynik jak na razie ma postać 10^3 *0,569, co jest zgodne z moim kalkulatorem ; > <br>
+        Nie będziemy generować więcej cyfr w tym przypadku, jednak pokaże pomocnicze równanie
+        odejmowania, które sie przydaje przy określaniu prawej strony nastepnego równania:<br><br>
+        <img th:src="@{/img/pierwiastek_no1.png}"/><br><br>
+    </div>
+    <div class="description" th:if="${description}=='exchange'">
+        Rozróżnia się dwa rodzaje konwersji: części całkowitej i części ułamkowej.<br><br>
+        1. Konwersja części całkowitej liczby w dowolnym systemie polega na dzieleniu tej
+        liczby przez podstawę nowego systemu zapisaną w starym systemie. Resztę z dzielenia tej liczby
+        zapisujemy, a następnie powtarzamy całość dla całkowitego wyniku dzielenia do czasu, aż dotrzemy
+        do końca. Naszą liczbą są wszystkie reszty przeczytane "od dołu".<br><br>
+
+        2. Konwersja części ułamkowej liczby w dowolnym systemie polega na pomnożeniu
+        tej części przez podstawe nowego systemu (oczywiście, tak jak w przypadku konwersji
+        części całkowitej, zapisana w starym systemie, tzn. 10 w systemie o podstawie
+        9 będzie zapisane jako 11). Część całkowita z mnożenia zapisujemy, a następnie
+        powtarzamy całość dla części ułamkowej wyniku do czasu, aż otrzymamy
+        pożądaną przez nas ilość cyfr lub aż zaczniemy otrzymywac same zera.
+    </div>
+
+    <div class="description" th:if="${description}=='ieee'">
+
+        1. LICZBY ZMIENNOPRZECINKOWE<br><br>
+    Dla liczb zapisanych w kodzie dwójkowym przyjęto standard IEEE 754. Określa
+    on ograniczenia i założenia dla liczb rzeczywistych zapisanych w formie wykładniczej(
+    naukowej). Liczba taka w postaci 64 bitowej wygląda dla przykładu tak:<br>
+        <img th:src="@{/img/ieee_no1.png}"/><br>
+        gdzie:<br>
+        S - 63 bit, bit znaku, jeśli jest równy 0, liczba jest dodatnia, jeśli 1 - ujemna,<br>
+        E - bity 52-62, wykładnik, jest zakodowany w kodzie 2^k−1 − 1, gdzie k to ilość
+        bitów wykładnika, w tym przypadku 11, więc wykładnik to 2^10 − 1<br>
+        M - bity 0-51, mantysa lub moduł, liczba, którą kodujemy, ma wartość: x < 1, x > 2,
+        jednak zapisujemy tylko cyfry, które występują po przecinku, 1 przed nim występuje
+        zawsze, dlatego jej nie zapisujemy. Dla przykładu mantysa 9 bitowa 101001100
+        to tak naprawdę liczba 1,101001100. Istnieją wyjątki od tej reguły, ale na razie
+        o nich nie mówimy.<br>
+        Bity potrzebne do zaokraglania, nie zapisujemy ich w reprezentacji,
+        bedzie o nich wiecej nieco pózniej: <br> G(bit ochrony),<br>R(bit zaokraglenia),<br>X(bit obecnosci zer na pozycjach dalszych
+        niz R).<br>
+        Dla standardu IEEE 754 istnieje kilka wariantów liczby zmiennoprzecinkowej,
+        ich wariacje są pokazane w tabeli:<br>
+        <img th:src="@{/img/ieee_no2.png}"/><br>
+        Wartość liczby
+        określa się ze wzoru: x = S^(−1) M * 2E <br>
+        Przykład: liczba 10101010110101100000000000000000. Po podziale jej według
+        tabelki mamy: <br>
+        S=1 - liczba ujemna <br>
+        E=01010101 - wykładnik, jego wartość po przekodowaniu to -106 <br>
+        M = 1, 1010112 = 1, 67311610 <br>
+        Więc liczba jest równa 1, 673116 * 2^(−106) <br><br>
+
+        2. ZAMIANA LICZBY NA POSTAć IEEE<br><br>
+        Jak zamieniamy? Bardzo prosto! Mając liczbę w dowolnym systemie naturalnym
+        zamieniamy ją na dwójkową, skalujemy tak, aby miała postać 1,coś tam,
+        a następnie kodujemy wykładnik i zapisujemy liczbę. Mając za to liczbę w dowolnym
+        systemie uzupełnieniowym, jeśli jest ona ujemna, zapisujemy ją jako
+        -(0-x), a następnie postępujemy tak samo, jak w przypadku liczby w systemie naturalnym. <br> Przykład: zamienimy liczbe 9832 (U10):<br>
+        <img th:src="@{/img/ieee_no3.png}"/><br>
+    </div>
+    <div id="buttonsCheckAndRes">
+    <button class="buttonToMaterials" onclick="checkAnswers()">Sprawdź odpowiedzi</button>
+    <button class="buttonToMaterials" onclick="resetAnswers(event)">Resetuj</button>
+    <a class="buttonToMaterials" th:href="@{/algoTasks/draw(category='exchange')}">Losuj przykład</a>
+        <div class="algoExampleToPractice">
+        <div id ="zero" class="algoStepsImg" draggable="true" ondragstart="drag(event)" >
+            <tr th:each="step: ${steps}">
+                <div >
+                    <div th:id="${step.id_algo_steps}" th:value="${step.steps_no}" class="droppable" draggable="true" ondragstart="drag(event)" th:text="${step.description}"></div>
+                </div>
+            </tr>
+
+        </div>
+
+        <div class="algoStepsToFill">
+            <tr th:each="step, iStat: ${steps}">
+                <div>
+                    <div th:name="${iStat.index}+1" class="draggable" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+            </tr>
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

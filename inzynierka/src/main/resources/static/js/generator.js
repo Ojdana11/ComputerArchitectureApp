@@ -112,20 +112,32 @@ generator.generateInputBoxesDivision = function(){
     var arg_last, arg_second_last;
     for(var i=0; i<arguments_number;i++) {arg_data[i]=[]}
 
-    for(var i=0; i<arguments_number;i++){
-        var arg_size = Math.floor((Math.random() * max_args_size) + 1);
+
+        var arg_size = Math.floor((Math.random() * 4) + 1);
         for(var index=0;index<arg_size;index++)
         {
-            arg_data[i][index] = Math.floor(Math.random()*base);
-            divs_content = divs_content + '<div class="letter">' + arg_data[i][index] +'</div>';
+            arg_data[0][index] = Math.floor(Math.random()*base);
+            divs_content = divs_content + '<div class="letter">' + arg_data[0][index] +'</div>';
         }
 
-        arg_last = arg_data[i][arg_data[i].length-1];
-        arg_second_last = arg_data[i][arg_data[i].length-2];
+        arg_last = arg_data[0][arg_data[0].length-1];
+        arg_second_last = arg_data[0][arg_data[0].length-2];
         divs_content = divs_content + '<div class="letter">' +"("+ agloHelpers.checkExtension(arg_last,arg_second_last, base) +")"+'</div>';
-       if(i==0)
         divs_content = divs_content + '<div class="letter">' +"/"+'</div>';
-    }
+
+
+         arg_size = 8;
+        for(var index=0;index<arg_size;index++)
+        {
+            arg_data[1][index] = Math.floor(Math.random()*base);
+            divs_content = divs_content + '<div class="letter">' + arg_data[1][index] +'</div>';
+        }
+
+        arg_last = arg_data[1][arg_data[1].length-1];
+        arg_second_last = arg_data[1][arg_data[1].length-2];
+        divs_content = divs_content + '<div class="letter">' +"("+ agloHelpers.checkExtension(arg_last,arg_second_last, base) +")"+'</div>';
+
+
     var divisor_extension =  agloHelpers.checkExtension(arg_data[0][arg_data[0].length-1],arg_data[0][arg_data[0].length-2], base);
     var dividend_extension =  agloHelpers.checkExtension(arg_data[1][arg_data[1].length-1],arg_data[1][arg_data[1].length-2], base);;
 
@@ -135,28 +147,39 @@ generator.generateInputBoxesDivision = function(){
     //[0] - cs, [1] -s
     var final_results = algorithm.countResults(arg_data, max_args_size+1, base);
 
-    var move_result =arg_second_last;
-    if(divisor_extension!== dividend_extension)
-        move_result = arg_second_last+1;
+    var move_result =arg_second_last+1;
+    var constant_partial_move=80;
+    if(divisor_extension===0 && divisor_extension===dividend_extension)
+    {
+        constant_partial_move=40;
+    }
+    if(divisor_extension!== dividend_extension){
+        constant_partial_move=0;
+    }
+
 
     generator.generateInputBoxes(final_results[1],"division_results",(final_results[1].length), "res_no_", "letter");
-    document.getElementById("division_results").style.marginLeft = 42*(move_result-1)+44+"px";
+    document.getElementById("division_results").style.marginLeft = 42*(move_result)+constant_partial_move+"px";
             divs_content = "";
-            for(var i=0;i<final_results[2].length;i++){
-                divs_content = divs_content +  '<div class="partial_operation_div" style="margin-left:'+i*42 +'px; border-bottom: 2px solid white">'
+            final_results[1].reverse();
+            for(var i=0;i<final_results[2].length-1;i++){
+                divs_content = divs_content +  '<div class="partial_operation_div" style="margin-left:'+((i*42)+constant_partial_move) +'px; border-bottom: 2px solid white">'
+                final_results[2][i].reverse();
                 for(var j=0; j<final_results[2][i].length;j++)
                 {
                     divs_content = divs_content + '<input class="division_letter" type="number" id="'+"partial_no_"+j+'" name="'+0+'" value="'+final_results[2][i][j]+'">';
                     /*divs_content = divs_content + '<input class="division_letter" type="number" id="'+"partial_no_"+j+'" name="'+arg_data[1][j]+'" value="'+final_results[1][i][j] +'">';*/
                 }
                 divs_content = divs_content + '<div style="clear:both;"></div>';
-                for(var j=0; j<final_results[2][i].length;j++)
+                final_results[3][final_results[1][i]].reverse();
+
+                for(var j=0; j<final_results[3][0].length;j++)
                 {
-                    divs_content = divs_content + '<input class="division_letter" type="number" id="'+"partial_no_"+j+'" name="'+0+'" value="'+0+'">';
+                    divs_content = divs_content + '<input class="division_letter" type="number" id="'+"partial_no_"+j+'" name="'+0+'" value="'+final_results[3][final_results[1][i]][j]+'">';
                     /*divs_content = divs_content + '<input class="division_letter" type="number" id="'+"partial_no_"+j+'" name="'+arg_data[1][j]+'" value="'+final_results[1][i][j] +'">';*/
                 }
-                divs_content = divs_content +  '</div>'
                 divs_content = divs_content + '<div style="clear:both;"></div>';
+                divs_content = divs_content +  '</div>'
             }
            document.getElementById("division_partial").innerHTML = divs_content;
 

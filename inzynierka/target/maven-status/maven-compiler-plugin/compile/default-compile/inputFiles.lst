@@ -1,5 +1,6 @@
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\TasksServiceImpl.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\TasksStatus.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\AlgoStepsRepository.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\RegisterController.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Tasks.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\TasksStatusRepository.java
@@ -7,6 +8,7 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\EmailService.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\algo\Number.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\utils\NumberSystem.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\AlgoStepsController.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\utils\FieldMatch.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\CalculatorController.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\HistoryController.java
@@ -14,6 +16,7 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\UserService.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\AuthenticationProviderConfig.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\UserServiceImpl.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\AlgoSteps.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Calculator.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\TasksService.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\MvcConfig.java

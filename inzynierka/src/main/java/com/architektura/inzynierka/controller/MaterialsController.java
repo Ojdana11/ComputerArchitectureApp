@@ -15,4 +15,8 @@ public class MaterialsController {
     public String addition(){
         return "materials/addition";
     }
+
+    @GetMapping("/materials/baseExchange")
+    public String baseExchange(){ return "materials/baseExchange";
+    }
 }

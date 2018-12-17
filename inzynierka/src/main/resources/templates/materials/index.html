@@ -19,34 +19,28 @@
     </div>
     <h1>materiały dydaktyczne</h1>
 
-    <a th:href="@{/materials/addition}">
-        <div class="box-by-me">podstawy</div>
-    </a>
-
-    <a th:href="@{/materials/addition}">
+    <a th:href="@{/algoTasks/draw(category='addition')}">
         <div class="box-by-me">dodawanie / odejmowanie</div>
     </a>
 
-    <a th:href="@{/task/all}">
+    <a th:href="@{/algoTasks/draw(category='multiplication')}">
         <div class="box-by-me">mnożenie</div>
     </a>
-    <a th:href="@{/task/all}">
+    <a th:href="@{/algoTasks/draw(category='division')}">
         <div class="box-by-me">dzielenie</div>
     </a>
 
-    <a  th:href="@{/task/all}">
+    <a  th:href="@{/algoTasks/draw(category='root')}">
         <div class="box-by-me">pierwiastek</div>
     </a>
 
-    <a th:href="@{/task/all}">
+    <a th:href="@{/algoTasks/draw(category='exchange')}">
         <div class="box-by-me">konwersja podstawy</div>
     </a>
-    <a  th:href="@{/task/all}">
+    <a  th:href="@{/algoTasks/draw(category='ieee')}">
         <div class="box-by-me">zmienny przecinek</div>
     </a>
-    <a  th:href="@{/task/all}">
-        <div class="box-by-me">ułamek okresowy</div>
-    </a>
+
 </div>
 
 </body>

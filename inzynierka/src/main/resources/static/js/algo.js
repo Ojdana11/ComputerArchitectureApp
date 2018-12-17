@@ -178,7 +178,7 @@ algorithm.division = function(divisor,dividend, base){
 
     }
     if(diff_sign) result[0]=base-1;
-    return [[0],result.reverse(), dividends_portion];
+    return [[0],result.reverse(), dividends_portion, divisor_matrix];
 
 
 };
