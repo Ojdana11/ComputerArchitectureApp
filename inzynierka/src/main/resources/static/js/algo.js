@@ -7,6 +7,7 @@ algorithm.countResults = function(arguments, max_size, base){
     for(var args_number=0;args_number<arguments.length; args_number++){
         arg_last = arguments[args_number][arguments[args_number].length-1];
         arg_second_last= arguments[args_number][arguments[args_number].length-2];
+        if(last_arg_number[args_number]!=0 || last_arg_number[args_number]!=base-1)
         last_arg_number[args_number]= agloHelpers.checkExtension(arg_last ,arg_second_last, base);
     }
 
@@ -18,8 +19,14 @@ algorithm.countResults = function(arguments, max_size, base){
         });
     }
     else{
-        arguments[0][arguments[0].length]=last_arg_number[0];
-        arguments[1][arguments[1].length]=last_arg_number[1];
+        if(arguments[0][arguments[0].length-1]!=0 && arguments[0][arguments[0].length-1]!=base-1)
+        {
+            arguments[0][arguments[0].length]=last_arg_number[0];
+        }
+        if(arguments[1][arguments[1].length-1]!=0 && arguments[1][arguments[1].length-1]!=base-1)
+        {
+            arguments[1][arguments[1].length]=last_arg_number[1];
+        }
     }
 
     switch (operation_type){
@@ -120,8 +127,11 @@ algorithm.multiplication = function (arg_up,arg_down, max_size, base){
 
 algorithm.division = function(divisor,dividend, base){
 
+
     var divisor_size= divisor.length;
-    if(dividend.length<=divisor.length)return [[0],[0], [0]];
+    if(dividend.length<divisor.length)return [[0],[0], [0]];
+
+
     var new_dividend=dividend;
     var divisor_matrix = [[0,0], divisor];
     for(var i=0;i<divisor_size;i++){
@@ -167,9 +177,7 @@ algorithm.division = function(divisor,dividend, base){
     }
 
     for(var i=0;i<=number_of_operations;i++){
-        //odejmowanie
         result[i]=agloHelpers.divisor_compare(dividends_portion[i], divisor_matrix, base);
-       // if(i==number_of_operations)break;
         dividends_portion[i+1]=[];
         dividends_portion[i+1] = algorithm.subtraction([dividends_portion[i], divisor_matrix[result[i]]], dividends_portion[i].length, base);
         dividends_portion[i+1] = dividends_portion[i+1][1];
@@ -183,28 +191,94 @@ algorithm.division = function(divisor,dividend, base){
 
 };
 
-algorithm.exchangeTotal = function(number, currentBase, targetBase){
+algorithm.exchangeTotal = function(number, currentBase, targetBase, part, precision){
 
-    var last_rest=1,i=0, totalInDiv=targetBase;
+    var totalInDiv=targetBase;
     var divisor =[];
+    divisor[0]=targetBase;
 
-//zapis targetBase w systemie currentBase
-    while(totalInDiv!==0){
-        divisor[i]= targetBase%currentBase;
-        totalInDiv = Math.floor(totalInDiv/currentBase);
-        i++;
+
+
+    if(currentBase<targetBase){
+        var i=0;
+        while(totalInDiv!==0){
+            divisor[i]= totalInDiv%currentBase;
+            totalInDiv = Math.floor(totalInDiv/currentBase);
+            i++;
+        }
     }
-    divisor[i]=0;
 
-    var result =[], partial=[];
-    i=0;
-    totalInDiv=number;
-    do{
-        partial[i]=algorithm.division(totalInDiv,divisor,currentBase);
-        totalInDiv =partial[i][1];
-        last_rest = partial[i][2];
-        i++;
 
-    }while(last_rest!==0);
+    var number_in_decimal=0;
+
+    if(part==="całkowita")
+    {
+        for(var l=0;l<number.length;l++){
+            number_in_decimal += number[l]*Math.pow(currentBase,l);
+        }
+    }
+    else{
+        for(var l=0;l<number.length;l++){
+            number_in_decimal += number[l]*Math.pow(currentBase,(l+1)*(-1));
+        }
+    }
+
+    var TotalResultOfDiv=[];
+    TotalResultOfDiv[0]=number_in_decimal;
+    if(part!=="całkowita")
+    TotalResultOfDiv[0]=parseFloat(number_in_decimal.toPrecision(number.length));
+    var theRest=[];
+    var i=1;
+
+    if(part==="całkowita"){
+        while(TotalResultOfDiv[i-1]!==0){
+            theRest[i-1]=TotalResultOfDiv[i-1]%targetBase;
+            TotalResultOfDiv[i]=Math.floor(TotalResultOfDiv[i-1]/targetBase);
+            i++;
+        }
+    }
+    else{
+        for(var i=0;i<=precision;i++){
+            theRest[i]=Math.floor(TotalResultOfDiv[i]*targetBase);
+            TotalResultOfDiv[i+1]=TotalResultOfDiv[i]*targetBase - theRest[i];
+            TotalResultOfDiv[i+1]=parseFloat(TotalResultOfDiv[i+1].toPrecision(number.length));//Math.round(TotalResultOfDiv[i+1]*Math.pow(10,number.length))/Math.pow(10,number.length);
+        }
+    }
+
+
+    var TotalResInCurBase =[]
+    for(var j=0;j<TotalResultOfDiv.length;j++){
+        TotalResInCurBase[j]=[];
+    }
+
+
+    for(var j=0,m=0;j<TotalResultOfDiv.length;j++,m=0){
+
+        if(part==="całkowita"){
+            do{
+                TotalResInCurBase[j][m]=TotalResultOfDiv[j]%currentBase;
+                TotalResultOfDiv[j]=Math.floor(TotalResultOfDiv[j]/currentBase);
+                m++;
+            }while(TotalResultOfDiv[j]!==0);
+        }else{
+            for(var m=0;m<precision;m++)
+            {
+                TotalResInCurBase[j][m]=Math.floor(TotalResultOfDiv[j]*currentBase);
+                TotalResultOfDiv[j]=parseFloat((TotalResultOfDiv[j]*currentBase - TotalResInCurBase[j][m]).toPrecision(number.length));
+            }
+
+        }
+
+    }
+    divisor=  divisor.reverse().join("");
+    return [theRest, TotalResInCurBase, divisor];
+
 
 };
+
+algorithm.ieee = function(total, part){
+
+    
+
+}
+

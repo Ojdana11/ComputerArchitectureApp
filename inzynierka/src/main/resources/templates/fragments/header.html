@@ -19,15 +19,15 @@
                     <li class="active">
                         <a th:href="@{/}">Start</a>
                     </li>
-                    <li sec:authorize="isAnonymous()" class="active">
-                        <a th:href="@{/login}">Zaloguj</a>
-                    </li>
-                    <li class="active" sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">Wyloguj</a>
-                    </li>
-                    <li class="active" sec:authorize="isAnonymous()">
-                        <a th:href="@{/register}">Rejestracja</a>
-                    </li>
+                    <!--    <li sec:authorize="isAnonymous()" class="active">
+                         <a th:href="@{/login}">Zaloguj</a>
+                     </li>
+                     <li class="active" sec:authorize="isAuthenticated()">
+                         <a th:href="@{/logout}">Wyloguj</a>
+                     </li>
+                   <li class="active" sec:authorize="isAnonymous()">
+                         <a th:href="@{/register}">Rejestracja</a>
+                     </li> -->
                     <li class="active">
                         <a th:href="@{/materials}">Materiały</a>
                     </li>

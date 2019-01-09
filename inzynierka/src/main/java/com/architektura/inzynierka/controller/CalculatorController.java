@@ -21,18 +21,8 @@ public class CalculatorController {
     }
 
     @GetMapping
-    public String showCalculatorForm(Model model){
+    public String showCalculatorForm(){
         return "calculator";
     }
-    @PostMapping
-    public String count(@ModelAttribute("calculator") @Valid Calculator calculator,
-                                      BindingResult result){
 
-
-        if (result.hasErrors()){
-            return "calculator";
-        }
-
-        return "redirect:/calculator?success";
-    }
 }

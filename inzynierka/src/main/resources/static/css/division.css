@@ -18,13 +18,13 @@
 }
 
 #division_content{
-    width: 90%;
+    width: 75%;
     background-color: black;
     float: left;
 }
 
 #divider_matrix{
-    width: 20%;
+    width: 25%;
     background-color: black;
     float: right;
     border: 2px solid white;

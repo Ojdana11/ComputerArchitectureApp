@@ -12,7 +12,7 @@ shower.showAnswer = function (task_id) {
 
 shower.showPrompt = function (element_id) {
     var popup = document.getElementById(element_id);
-    popup.classList.toggle("show");
+    popup.style.display = "block";
 
 
 }
