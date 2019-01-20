@@ -7,6 +7,7 @@
     <script type="text/javascript" th:src="@{/js/algoHelpers.js}"></script>
     <script type="text/javascript" th:src="@{/js/algo.js}"></script>
     <script type="text/javascript" th:src="@{/js/generator.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ieee754.js}"></script>
     <script type="text/javascript" th:src="@{/js/checker.js}"></script>
     <script type="text/javascript" th:src="@{/js/shower.js}"></script>
     <script type="text/javascript" th:src="@{/js/calculator.js}"></script>
@@ -22,13 +23,19 @@
         <h3>Kategoria zadania:</h3><br>
         <div id="category">
             <button class="task_category" id="cat_arithmetic"
-                    onclick="checker.checkCategory(this), shower.showElements(['boxes-to-generate-tasks']), shower.hideElements(['exchange'])">arytmetyka UX</button>
+                    onclick="checker.checkCategory(this), shower.showElements(['boxes-to-generate-tasks']), shower.hideElements(['the_answer','show_result','exchange','division','ieee754', 'prompt'])">arytmetyka UX</button>
             <button class="task_category" id="cat_exchange_base"
-                    onclick="checker.checkCategory(this), shower.showElements(['exchange']), shower.hideElements(['boxes-to-generate-tasks', 'division'])">konwersja podstawy</button>
-            <button class="task_category" id="cat_ieee"  onclick="checker.checkCategory(this)">IEEE 754</button>
+                    onclick="checker.checkCategory(this), shower.showElements(['exchange']), shower.hideElements(['the_answer','show_result','boxes-to-generate-tasks', 'division','ieee754', 'prompt', 'other_operation_divs'])">konwersja podstawy</button>
+            <button class="task_category" id="cat_ieee"
+                    onclick="checker.checkCategory(this), shower.showElements(['ieee754']), shower.hideElements(['the_answer','show_result','boxes-to-generate-tasks', 'division','exchange', 'prompt', 'other_operation_divs'])">IEEE 754</button>
         </div>
 
     </div>
+    <div id="prompt" style="clear:both;">
+    </div>
+
+    <button style="display: none;" id="show_result" onclick=" shower.showAnswer('the_answer')">pokaż wynik</button>
+    <div id="the_answer"></div>
 
     <h3>Parametry zadania:</h3>
     <div id="boxes-to-generate-tasks">
@@ -49,8 +56,9 @@
          <label for="arg_number_for_generate_task">liczba argumentów</label>:
         <input type="number" id="arg_number_for_generate_task">
     </div>
-    <button th:onclick="|generator.generateArguments()|">losuj</button>
-    <button th:onclick="|checker.checkUsersAnswer(${'the_c_element_id'}); checker.checkUsersAnswer(${'the_s_element_id'})|">sprawdź</button>
+    <button onclick="generator.generateArguments(); shower.hideElements(['the_answer']), shower.showPrompt('show_result')">losuj</button>
+    <button onclick="checker.checkAnswers('letter');checker.checkAnswers('division_letter')">sprawdź</button>
+    <button onclick="checker.prompt('arithmetic'); shower.showElements(['prompt'])">podpowiedź</button>
     </div>
 
     <div id="other_operation_divs">
@@ -64,8 +72,8 @@
     <div id="exchange">
         <label for="numbers_part">część</label>:
         <select onchange="shower.showArgsNumberChoice();" id="numbers_part">
-            <option value="+">całkowita</option>
-            <option value="-">ułamkowa</option>
+            <option value="całkowita">całkowita</option>
+            <option value="ułamkowa">ułamkowa</option>
         </select>
         <label for="current_base">podstawa</label>:
         <input type="number" id="current_base">
@@ -75,9 +83,33 @@
         <label for="arg_size_for_exchange">długość liczby</label>:
         <input type="number" id="arg_size_for_exchange">
 
-        <button th:onclick="|generator.generateArguments()|">losuj</button>
-        <button th:onclick="|checker.checkUsersAnswer(${'the_c_element_id'}); checker.checkUsersAnswer(${'the_s_element_id'})|">sprawdź</button>
+        <button onclick="generator.ExchangeTotal(), shower.hideElements(['the_answer']), shower.showPrompt('show_result')">losuj</button>
+        <button onclick="checker.checkAnswers('exchangeResult')">sprawdź</button>
+        <button onclick="checker.prompt('exchange'), shower.showElements(['prompt'])">podpowiedź</button>
+        <div id="exchange_result"></div>
     </div>
+
+    <div id="ieee754">
+        <label for="precision">precyzja</label>:
+        <select onchange="shower.showArgsNumberChoice();" id="precision">
+            <option value="32">single (32b)</option>
+            <option value="64">double (64b)</option>
+        </select>
+        <label for="ieeeOperation">operacja</label>:
+        <select onchange="shower.showArgsNumberChoice();" id="ieeeOperation">
+            <option value="toIeee">decimal -> IEEE</option>
+            <option value="toDecimal">IEEE -> decimal</option>
+        </select>
+        <button onclick="generator.generateIeee(), shower.hideElements(['the_answer']), shower.showPrompt('show_result')">losuj</button>
+        <button onclick="checker.checkAnswers('letter')">sprawdź</button>
+        <button onclick="checker.prompt('ieee'), shower.showElements(['prompt'])">podpowiedź</button>
+        <br> <br>
+        <div id="ieee_task"></div>
+        <br> <br>
+        <div id="ieee_answer"></div>
+        <div id="ieee_result"></div>
+    </div>
+
 
     <div id="division">
         <div id="division_results">
@@ -88,9 +120,7 @@
             <div id="division_partial"></div>
         </div>
         <div id="divider_matrix">
-
         </div>
-
     </div>
 </div>
 </div>

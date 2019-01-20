@@ -12,7 +12,7 @@ shower.showAnswer = function (task_id) {
 
 shower.showPrompt = function (element_id) {
     var popup = document.getElementById(element_id);
-    popup.classList.toggle("show");
+    popup.style.display = "block";
 
 
 }
@@ -38,13 +38,16 @@ shower.showElements = function (element_id) {
         document.getElementById(element_id[i]).style.display = "inline";
     }
 
+
+}
+
+shower.arithmericHider = function (){
+
     document.getElementById("fieldsForC").innerHTML ='';
     document.getElementById("arguments").innerHTML ='';
     document.getElementById("partial").innerHTML ='';
     document.getElementById("results").innerHTML ='';
-
 }
-
 shower.hideElements = function (element_id) {
     for(var i=0;i<element_id.length;i++){
         document.getElementById(element_id[i]).style.display = "none";

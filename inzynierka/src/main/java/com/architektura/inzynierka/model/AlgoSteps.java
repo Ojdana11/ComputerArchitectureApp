@@ -14,11 +14,11 @@ public class AlgoSteps implements Serializable{
         this.id_algo_steps = id_algo_steps;
     }
 
-    public Integer getAlgo_no() {
+    public String getAlgo_no() {
         return algo_no;
     }
 
-    public void setAlgo_no(Integer algo_no) {
+    public void setAlgo_no(String algo_no) {
         this.algo_no = algo_no;
     }
 
@@ -49,7 +49,7 @@ public class AlgoSteps implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_algo_steps;
-    private Integer algo_no;
+    private String algo_no;
     private String description;
     private String category;
     private Integer steps_no;

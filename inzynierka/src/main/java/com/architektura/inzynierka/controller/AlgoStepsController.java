@@ -25,7 +25,7 @@ public class AlgoStepsController {
 
         Iterable<AlgoSteps> steps = algoStepsRepository.findAll();
         Random generator = new Random();
-        Integer algo_no =  generator.nextInt(max_algo_no)+1;
+        String algo_no =  Integer.toString(generator.nextInt(max_algo_no)+1);
         List<AlgoSteps> addSteps = new ArrayList<>();
 
         steps.forEach((AlgoSteps x) -> {

@@ -14,8 +14,8 @@ function drop(ev) {
     document.getElementById(data).style.margin = "2px";
 }
 
-function checkAnswers(){
-var answers = document.getElementsByClassName('draggable');
+function checkAnswers(className){
+var answers = document.getElementsByClassName(className);
     Array.prototype.forEach.call(answers,function (t) {
     if(t.getAttribute('value')==t.getAttribute('name'))
         t.style.backgroundColor = "#7AB54B";

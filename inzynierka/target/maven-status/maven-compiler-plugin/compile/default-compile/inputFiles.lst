@@ -16,6 +16,7 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\UserService.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\AuthenticationProviderConfig.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\UserServiceImpl.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\AlgoStepsDto.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\AlgoSteps.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\Calculator.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\service\TasksService.java
@@ -28,7 +29,7 @@ C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektu
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\config\LoggingAccessDeniedHandler.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\InzynierkaApplication.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\repository\UserRepository.java
-C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\TaskController.java
+C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\TaskDto.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\AdminController.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\model\User.java
 C:\Users\Projekt\ComputerArchitectureApp\inzynierka\src\main\java\com\architektura\inzynierka\controller\LoginController.java

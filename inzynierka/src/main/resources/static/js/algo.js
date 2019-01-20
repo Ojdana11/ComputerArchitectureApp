@@ -276,9 +276,4 @@ algorithm.exchangeTotal = function(number, currentBase, targetBase, part, precis
 
 };
 
-algorithm.ieee = function(total, part){
-
-    
-
-}
 

@@ -4,46 +4,59 @@
       layout:decorate="~{fragments/layout}">
 <head>
     <title>Admin</title>
+    <script type="text/javascript" th:src="@{/js/algoHelpers.js}"></script>
+    <script type="text/javascript" th:src="@{/js/algo.js}"></script>
+    <script type="text/javascript" th:src="@{/js/generator.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ieee754.js}"></script>
+    <script type="text/javascript" th:src="@{/js/checker.js}"></script>
+    <script type="text/javascript" th:src="@{/js/shower.js}"></script>
+    <script type="text/javascript" th:src="@{/js/admin.js}"></script>
+    <script type="text/javascript" th:src="@{/js/calculator.js}"></script>
+    <script type="text/javascript" th:src="@{/js/theGlobalVar.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/algo.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/division.css}"/>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
     <h1>Strona admina!</h1>
-    <button>Dodaj przykładowy algorytm</button>
-    <button>Dodaj zadanie</button>
-    <button>Usuń zadanie</button>
-    <button>Modyfikuj zadanie</button>
+    <div id="content_cat">
+            <button class="task_category" id="add_algo"
+                    onclick="checker.checkCategory(this), shower.showElements(['add_algo_form']), shower.hideElements(['add_task_form','delete_task_form','modify_task_form'])">Dodaj algorytm</button>
+            <button class="task_category" id="add_task"
+                    onclick="checker.checkCategory(this), shower.showElements(['add_task_form']), shower.hideElements(['add_algo_form','delete_task_form','modify_task_form'])">Dodaj zadanie</button>
+            <button class="task_category" id="delete_task"
+                    onclick="checker.checkCategory(this), shower.showElements(['delete_task_form']), shower.hideElements(['add_task_form','add_algo_form','modify_task_form'])">Usuń zadanie</button>
 
+    </div>
+
+    <div id="add_task_form" style="display: none">
     <div th:if="${param.success}">
         <div class="alert alert-info">
            Zadanie zostało dodane!
         </div>
     </div>
-    <form th:action="@{/task/add}" th:object="${taskDto}" method="post">
 
-        <p class="error-message"
-           th:if="${#fields.hasGlobalErrors()}"
-           th:each="error : ${#fields.errors('global')}"
-           th:text="${error}">Niepoprawne dane</p>
+    <form th:action="@{/admin/task/add}" th:object="${taskDto}" method="post">
 
-        <div class="form-group"
-             th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-            <label for="answer" class="control-label">Pytanie</label>
-            <input id="answer"
-                   class="form-control"
-                   th:field="*{answer}"/>
-            <p class="error-message"
-               th:each="error: ${#fields.errors('answer')}"
-               th:text="${error}">Niepoprawne dane</p>
-        </div>
+
         <div class="form-group"
              th:classappend="${#fields.hasErrors('question')}? 'has-error':''">
-            <label for="question" class="control-label">Odpowiedź</label>
+            <label for="question" class="control-label">Pytanie</label>
             <input id="question"
                    class="form-control"
                    th:field="*{question}"/>
             <p class="error-message"
                th:each="error : ${#fields.errors('question')}"
                th:text="${error}">Niepoprawne dane</p>
+        </div>
+        <div class="form-group"
+             th:classappend="${#fields.hasErrors('answer')}? 'has-error':''">
+            <label for="answer" class="control-label">Odpowiedź</label>
+            <input id="answer"
+                   class="form-control"
+                   th:field="*{answer}"/>
         </div>
         <div class="form-group"
              th:classappend="${#fields.hasErrors('category')}? 'has-error':''">
@@ -55,13 +68,43 @@
                th:each="error : ${#fields.errors('category')}"
                th:text="${error}">Niepoprawne dane</p>
         </div>
-
-
         <div class="form-group">
             <button class="btn btn-success">Dodaj</button>
         </div>
 
     </form>
+    </div>
+
+    <div id="add_algo_form" style="display: none">
+
+        <input id="steps_number_in_algo" type="number"/>
+        <button onclick="admin.stepsFields()">Liczba kroków</button>
+        <div id="stepsFields">
+
+        </div>
+
+    </div>
+    <div id="delete_task_form" style="display: none">
+
+        <tr th:each="task: ${tasks}">
+            <div class="td-tasks">
+                <div class="task-id"><td th:text="${task.id_task}" /></div>
+                <div class="task-question"><td th:text="${task.question}" /></div>
+                <div th:id="${task.id_task}">
+                    <div class="task-answer"><td th:text="${task.answer}" /></div>
+                </div>
+                <input type="checkbox" th:value="${task.id_task}">
+
+            </div>
+
+        </tr>
+
+        <div class="form-group">
+            <button class="btn btn-success">Usuń</button>
+        </div>
+    </div>
+
+
 </div>
 </body>
 </html>

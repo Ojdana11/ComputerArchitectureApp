@@ -22,17 +22,14 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
-
     @Autowired
     private EmailService emailService;
-
     @ModelAttribute("userDto")
     public UserRegistrationDto userRegistrationDto() {
         return new UserRegistrationDto();
     }
 
-
-    @GetMapping("/register")
+  @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         return "register";
     }
@@ -45,11 +42,9 @@ public class RegisterController {
         if (existing != null){
             result.rejectValue("email", null, "Instnieje konto o podanym adresie email");
         }
-
         if (result.hasErrors()){
             return "register";
         }
-
 
        User user =  userService.save(userDto);
         String appUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
@@ -68,20 +63,15 @@ public class RegisterController {
     @GetMapping("/confirm")
     public String showConfirmationForm(@RequestParam Map requestParams,
                                        BindingResult result){
-//Dopracować
         User user = userService.findByToken(requestParams.get("token").toString());
         if (user == null){
             result.rejectValue("email", null, "ink weryfikacyjny jest błędny");
         }
-
         if (result.hasErrors()){
             return "redirect:/confirm?fail";
         }
 
         user.setEnabled(true);
         return "redirect:/confirm?success";
-
     }
-
-
 }

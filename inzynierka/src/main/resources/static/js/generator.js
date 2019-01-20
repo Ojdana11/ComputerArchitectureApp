@@ -187,14 +187,11 @@ generator.ExchangeTotal = function(){
     var target_base = parseInt(document.getElementById("target_base").value);
     var numbers_part = document.getElementById("numbers_part").value;
     var arg_size_for_exchange = parseInt(document.getElementById("arg_size_for_exchange").value);
-
     if(isNaN(current_base)|| isNaN(target_base) || isNaN(arg_size_for_exchange)) return;
-
     var arg_data=[];
     for(var i=0;i<arg_size_for_exchange;i++){
         arg_data[i] = Math.floor(Math.random()*current_base);
     }
-
     var final_result = algorithm.exchangeTotal(arg_data, current_base, target_base,numbers_part, 5);
     var div_content ='<span> ';
     if(numbers_part==='całkowita'){
@@ -212,12 +209,10 @@ generator.ExchangeTotal = function(){
             '<th>reszta</th>' +
             '</tr>';
     }
-
     else{
         div_content=div_content+'<th>mnożnik</th>' +
             '<th>część ułamkowa</th>'+'<th>część całkowita</th>' +'</tr>';
     }
-
 
     var loop = final_result[0].length;
     if(numbers_part==='całkowita'){
@@ -225,7 +220,6 @@ generator.ExchangeTotal = function(){
             final_result[1][i]= final_result[1][i].reverse().join("");
         }
     }
-
     if(numbers_part!=='całkowita')
         loop--;
         for(var i=0;i<loop;i++){
@@ -242,8 +236,7 @@ generator.ExchangeTotal = function(){
                 }
             div_content=div_content+ '<td> r.'+'<input class="exchangeResult" name="'+ final_result[0][i]+'"></td></tr>';
         }
-
-        div_content = div_content + '</table>';
+    div_content = div_content + '</table>';
     document.getElementById("exchange_result").innerHTML = div_content;
     if(numbers_part==='całkowita')
     {
@@ -252,11 +245,6 @@ generator.ExchangeTotal = function(){
     else{
         document.getElementById("the_answer").innerHTML = '0.'+final_result[0].join("");
     }
-
-
-
-
-
 }
 
 generator.IEEE754 = function(input){
